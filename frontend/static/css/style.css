@@ -1,0 +1,152 @@
+body {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    color: white;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo img { width: 30px; margin-right: 10px; }
+.logo span { font-size: 20px; font-weight: bold; }
+
+.nav-auth { display: flex; align-items: center; gap: 20px; }
+nav ul { display: flex; gap: 30px; list-style: none; padding: 0; margin: 0; }
+
+nav ul li a,
+.auth-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav ul li a::after,
+.auth-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ff4da6, #ff80bf);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    animation: pulseBreathBorder 2.5s infinite ease-in-out;
+}
+
+nav ul li a:hover::after,
+.auth-links a:hover::after {
+    transform: scaleX(1);
+}
+
+nav ul li a:hover,
+.auth-links a:hover {
+    color: #ff4da6;
+    transform: translateY(-3px);
+    text-shadow: 0px 4px 10px rgba(255, 77, 166, 0.7);
+}
+
+/* Hero text section animations (faster) */
+.hero-text {
+    text-align: center;
+    margin-top: 200px;
+    color: white;
+    padding: 30px;
+    animation: fadeSlideUp 0.8s ease forwards; /* Faster from 1s to 0.6s */
+}
+
+/* Title styles */
+.hero-text h1 {
+    font-size: 60px;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 0px 4px 15px rgba(255, 77, 166, 0.8);
+    animation: fadeSlideUp 0.8s ease forwards;
+}
+
+.hero-text h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 15px 0;
+    animation: fadeSlideUp 0.8s ease forwards;
+}
+
+.hero-text p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    line-height: 1.5;
+    animation: fadeSlideUp 0.8s ease forwards;
+}
+
+/* Let's Start Button with breathing glow */
+.start-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff4da6, #ff80bf);
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0px 4px 15px rgba(255, 77, 166, 0.8);
+    transition: all 0.3s ease;
+    animation: breathingGlow 2.5s ease-in-out infinite; /* breathing effect */
+}
+
+.start-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Breathing Glow Animation */
+@keyframes breathingGlow {
+    0% {
+        transform: scale(1);
+        box-shadow: 0px 0px 15px rgba(255, 77, 166, 0.8);
+    }
+    50% {
+        transform: scale(1.07);
+        box-shadow: 0px 0px 35px rgba(255, 77, 166, 0.9);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0px 0px 15px rgba(255, 77, 166, 0.8);
+    }
+}
+
+/* Faster fadeSlideUp animation */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
