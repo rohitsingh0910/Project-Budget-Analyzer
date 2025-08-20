@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Project Budget Analyzer</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url('/static/images/background.jpg') no-repeat center center/cover;
+            color: white;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            margin: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: violet;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+            background: violet;
+        }
+
+        /* Glassmorphism Card */
+        .signup-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+        }
+
+        .signup-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 350px;
+            box-shadow: 0 0 15px violet, 0 0 30px violet;
+            text-align: center;
+            animation: breathing 3s ease-in-out infinite;
+        }
+
+        @keyframes breathing {
+            0%, 100% {
+                box-shadow: 0 0 15px violet, 0 0 30px violet;
+            }
+            50% {
+                box-shadow: 0 0 25px violet, 0 0 50px violet;
+            }
+        }
+
+        .signup-card h2 {
+            margin-bottom: 20px;
+        }
+
+        .signup-card input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .signup-card button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: violet;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 10px violet;
+            transition: all 0.3s ease;
+        }
+
+        .signup-card button:hover {
+            background: #d000ff;
+            box-shadow: 0 0 20px violet;
+        }
+
+        .signin-link {
+            margin-top: 15px;
+        }
+
+        .signin-link a {
+            color: violet;
+            text-decoration: none;
+        }
+
+        .signin-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="/static/images/logo.png" alt="Logo" />
+        <span>Project Budget Analyzer</span>
+    </div>
+    <div class="nav-auth">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/auth/about">About</a></li>
+                <li><a href="/auth/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="auth-links">
+        </div>
+    </div>
+</header>
+
+<div class="signup-container">
+    <div class="signup-card">
+        <h2>Create Account</h2>
+        {% if error %}
+        <div class="error-message">
+            {{ error }}  <!-- This will show either password or email error -->
+        </div>
+        {% endif %}
+        <form action="/auth/signup" method="POST">
+            <input type="text" name="full_name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="signin-link">
+            Already have an account? <a href="/auth/login">Sign In</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
