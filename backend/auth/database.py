@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from links import MONGO_URI
+from backend.auth.links import MONGO_URI
 
 try:
     client = MongoClient(MONGO_URI)
