@@ -1,3 +1,47 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Contact - Project Budget Analyzer</title>-->
+<!--    <link rel="stylesheet" href="/static/css/style.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--    &lt;!&ndash; Header &ndash;&gt;-->
+<!--    <header>-->
+<!--        <div class="logo">-->
+<!--            <img src="/static/images/logo.png" alt="Logo" />-->
+<!--            <span>Project Budget Analyzer</span>-->
+<!--        </div>-->
+<!--        <div class="nav-auth">-->
+<!--            <nav>-->
+<!--                <ul>-->
+<!--                    <li><a href="/">Home</a></li>-->
+<!--                    <li><a href="/auth/about">About</a></li>-->
+<!--                    <li><a href="/auth/contact" class="active">Contact Us</a></li>-->
+<!--                </ul>-->
+<!--            </nav>-->
+<!--            <div class="auth-links">-->
+<!--                <a href="/auth/login">Sign In</a>-->
+<!--                <span> | </span>-->
+<!--                <a href="/auth/signup">Sign Up</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </header>-->
+
+<!--    &lt;!&ndash; Contact Section &ndash;&gt;-->
+<!--    <div class="hero-text">-->
+<!--        <h1>Contact Us</h1>-->
+<!--        <p>We’d love to hear from you. Reach out to our team:</p>-->
+
+<!--        <div class="contact-list">-->
+<!--            <p><strong>Anuroop Gowda</strong><br>Email: anuroopgowdac@gmail.com<br>Phone: 9632669169</p>-->
+<!--            <p><strong>Abhishek M</strong><br>Email: abhishekmadgiri@gmail.com<br>Phone: 8366473391</p>-->
+<!--            <p><strong>Rohit Singh</strong><br>Email: rsstylerohit@gmail.com<br>Phone: 9305230611</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +49,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Project Budget Analyzer</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .contact-list {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px; /* Space between each contact */
+            flex-wrap: wrap; /* Allows wrapping to the next line if space is limited */
+        }
+
+        .contact-item {
+            flex: 1;
+            min-width: 250px; /* Ensures contacts are at least this wide */
+            text-align: center;
+        }
+
+        .contact-item strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+
+        .contact-item p {
+            margin: 5px 0;
+        }
+    </style>
+
 </head>
 <body>
     <!-- Header -->
@@ -35,9 +104,21 @@
         <p>We’d love to hear from you. Reach out to our team:</p>
 
         <div class="contact-list">
-            <p><strong>Anuroop Gowda</strong><br>Email: anuroopgowdac@gmail.com<br>Phone: 9632669169</p>
-            <p><strong>Abhishek M</strong><br>Email: abhishekmadgiri@gmail.com<br>Phone: 8366473391</p>
-            <p><strong>Rohit Singh</strong><br>Email: rsstylerohit@gmail.com<br>Phone: 9305230611</p>
+            <div class="contact-item">
+                <strong>Anuroop Gowda</strong>
+                <p>Email: anuroopgowdac@gmail.com</p>
+                <p>Phone: 9632669169</p>
+            </div>
+            <div class="contact-item">
+                <strong>Abhishek M</strong>
+                <p>Email: abhishekmadgiri@gmail.com</p>
+                <p>Phone: 8366473391</p>
+            </div>
+            <div class="contact-item">
+                <strong>Rohit Singh</strong>
+                <p>Email: rsstylerohit@gmail.com</p>
+                <p>Phone: 9305230611</p>
+            </div>
         </div>
     </div>
 </body>
