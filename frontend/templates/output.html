@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Output – Project Budget Analyzer</title>
+  <link rel="stylesheet" href="/static/css/output.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+      <div class="logo">
+          <img src="/static/images/logo.png" alt="Logo" />
+          <span>Project Budget Analyzer</span>
+      </div>
+      <div class="nav-auth">
+          <nav>
+              <ul>
+                  <li><a href="/">Home</a></li>
+              </ul>
+          </nav>
+          <div class="auth-links">
+              <span class="welcome">Welcome, {{ full_name }}</span>
+              <span> | </span>
+              <a href="/auth/logout" class="logout">Logout</a>
+          </div>
+      </div>
+  </header>
+
+  <!-- Main -->
+  <main class="result-container">
+    <section class="result-panel">
+      <h2>Estimated Budget</h2>
+      <div class="budget-card">
+        <p class="amount">{{ amount }}</p>
+        <p class="hint">Calculated from your project inputs</p>
+      </div>
+
+      <div class="back-actions">
+        <a href="/auth/dashboard" class="back-btn">← Back to Dashboard</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Slot Machine Sound -->
+  <audio id="slotSound" src="/static/sounds/slot-machine.mp3" preload="auto"></audio>
+
+  <!-- Budget Animation Script -->
+  <script>
+      const displayEl = document.querySelector(".amount");
+      const audioEl = document.getElementById("slotSound");
+
+      // Use amount passed from backend instead of random
+      let finalAmount = {{ amount }}.toFixed(2);
+
+      let startTime = null;
+
+      function formatAmount(num) {
+        return "₹ " + Number(num).toLocaleString("en-IN", { minimumFractionDigits: 2 });
+      }
+
+      function animateAmountScroll(timestamp) {
+        if (!startTime) {
+          startTime = timestamp;
+          audioEl.play();
+          audioEl.loop = true;
+        }
+
+        let elapsed = timestamp - startTime;
+        let progress = Math.min(elapsed / 3000, 1); // 3 seconds
+        let easeOut = 1 - Math.pow(1 - progress, 3); // Ease-out cubic
+
+        let currentValue = (easeOut * finalAmount).toFixed(2);
+        displayEl.textContent = formatAmount(currentValue);
+
+        if (progress < 1) {
+          requestAnimationFrame(animateAmountScroll);
+        } else {
+          audioEl.pause();
+          audioEl.currentTime = 0;
+          displayEl.textContent = formatAmount(finalAmount); // Final value
+        }
+      }
+
+      requestAnimationFrame(animateAmountScroll);
+    </script>
+
+</body>
+</html>

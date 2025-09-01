@@ -20,10 +20,21 @@
                     <li><a href="/auth/contact">Contact Us</a></li>
                 </ul>
             </nav>
+<!--            <div class="auth-links">-->
+<!--                <a href="/auth/login">Sign In</a>-->
+<!--                <span> | </span>-->
+<!--                <a href="/auth/signup">Sign Up</a>-->
+<!--            </div>-->
             <div class="auth-links">
-                <a href="/auth/login">Sign In</a>
-                <span> | </span>
-                <a href="/auth/signup">Sign Up</a>
+                {% if user %}
+                    <span class="welcome">Welcome, {{ user.full_name }}</span>
+                    <span> | </span>
+                    <a href="/auth/logout" class="logout">Logout</a>
+                {% else %}
+                    <a href="/auth/login">Sign In</a>
+                    <span> | </span>
+                    <a href="/auth/signup">Sign Up</a>
+                {% endif %}
             </div>
         </div>
     </header>
@@ -32,8 +43,6 @@
         <h1 class="welcome-heading">Welcome</h1>
         <h2 class="subheading">Thinking of a project budget?</h2>
         <p class="tagline">Try our AI-driven application to find the perfect budget for your project.</p>
-<!--        <button class="start-btn">Let's Start</button>-->
-<!--        <a href="/auth/signup">Let's Start</a>-->
         <a href="/auth/signup" class="start-btn">Let's Start</a>
 
     </div>

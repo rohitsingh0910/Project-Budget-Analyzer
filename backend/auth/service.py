@@ -17,7 +17,7 @@ def login_user(email: str, password: str) -> dict:
 
         return {
             "id": str(user["_id"]),
-            "name": user.get("name"),
+            "full_name": user.get("full_name"),  # use full_name instead of name
             "email": user.get("email")
         }
     except Exception as e:

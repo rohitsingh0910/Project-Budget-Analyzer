@@ -1,10 +1,435 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <title>Dashboard – Project Budget Analyzer</title>-->
+<!--  <link rel="stylesheet" href="/static/css/dashboard.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--  <header>-->
+<!--      <div class="logo">-->
+<!--          <img src="/static/images/logo.png" alt="Logo" />-->
+<!--          <span>Project Budget Analyzer</span>-->
+<!--      </div>-->
+<!--      <div class="nav-auth">-->
+<!--          <nav>-->
+<!--              <ul>-->
+<!--                  <li><a href="/">Home</a></li>-->
+<!--              </ul>-->
+<!--          </nav>-->
+<!--          <div class="auth-links">-->
+<!--              <span class="welcome">Welcome, {{ full_name }}</span>-->
+<!--              <span> | </span>-->
+<!--              <a href="/auth/logout" class="logout">Logout</a>-->
+<!--          </div>-->
+<!--      </div>-->
+<!--  </header>-->
+
+<!--  &lt;!&ndash; Main &ndash;&gt;-->
+<!--  <main class="dashboard-container">-->
+<!--    <form action="/auth/output.html" method="GET" class="input-form">-->
+<!--      <h2 class="form-title">Enter Project Details</h2>-->
+
+<!--      <div class="form-grid">-->
+<!--        &lt;!&ndash; Project Info &ndash;&gt;-->
+<!--        <div class="form-section">-->
+<!--          <h3>Project Info</h3>-->
+
+<!--          <label>Year</label>-->
+<!--          <input type="number" name="Year" min="1" placeholder="Enter year" required>-->
+
+<!--          <label>Industry Sector</label>-->
+<!--          <select name="industry_sector" required>-->
+<!--            <option value="" disabled selected hidden>— Select sector —</option>-->
+<!--            <option>Service Industry</option>-->
+<!--            <option>Construction</option>-->
+<!--            <option>Wholesale & Retail</option>-->
+<!--            <option>Insurance</option>-->
+<!--            <option>Banking</option>-->
+<!--            <option>Medical & Health Care</option>-->
+<!--            <option>Manufacturing</option>-->
+<!--            <option>Government</option>-->
+<!--            <option>Logistics</option>-->
+<!--            <option>Other</option>-->
+<!--          </select>-->
+
+<!--          <label>Organisation Type</label>-->
+<!--          <select name="organisation_type" required>-->
+<!--            <option value="" disabled selected hidden>— Select organisation type —</option>-->
+<!--            <option>Software Development</option>-->
+<!--            <option>Manufacturing</option>-->
+<!--            <option>Government</option>-->
+<!--            <option>Telecommunication</option>-->
+<!--            <option>Education</option>-->
+<!--            <option>Defence</option>-->
+<!--            <option>Retail</option>-->
+<!--            <option>Financial</option>-->
+<!--            <option>Other</option>-->
+<!--          </select>-->
+
+<!--          <label>Client Server</label>-->
+<!--          <select name="client_server" required>-->
+<!--            <option value="" disabled selected hidden>— Select option —</option>-->
+<!--            <option>Yes</option>-->
+<!--            <option>No</option>-->
+<!--            <option>Don't Know</option>-->
+<!--            <option>Not Applicable</option>-->
+<!--          </select>-->
+
+<!--          <label>Architecture</label>-->
+<!--          <select name="architecture" required>-->
+<!--            <option value="" disabled selected hidden>— Select architecture —</option>-->
+<!--            <option>Stand Alone</option>-->
+<!--            <option>Client Server</option>-->
+<!--            <option>Multi-Tier</option>-->
+<!--            <option>Multi-Tier with Web Interface</option>-->
+<!--            <option>Unknown</option>-->
+<!--          </select>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Application Info &ndash;&gt;-->
+<!--        <div class="form-section">-->
+<!--          <h3>Application Info</h3>-->
+
+<!--          <label>Application Group</label>-->
+<!--          <select name="application_group" required>-->
+<!--            <option value="" disabled selected hidden>— Select group —</option>-->
+<!--            <option>No</option>-->
+<!--            <option>Yes</option>-->
+<!--            <option>Don't Know</option>-->
+<!--            <option>People Soft</option>-->
+<!--            <option>TIBCO</option>-->
+<!--          </select>-->
+
+<!--          <label>Development Platform</label>-->
+<!--          <select name="development_platform" required>-->
+<!--            <option value="" disabled selected hidden>— Select platform —</option>-->
+<!--            <option>PC</option>-->
+<!--            <option>MR</option>-->
+<!--            <option>MF</option>-->
+<!--            <option>Multi</option>-->
+<!--            <option>Proprietary</option>-->
+<!--            <option>Hand Held</option>-->
+<!--            <option>Unknown</option>-->
+<!--          </select>-->
+
+<!--          <label>Business Area Type</label>-->
+<!--          <select name="business_area" required>-->
+<!--            <option value="" disabled selected hidden>— Select business area —</option>-->
+<!--            <option>Sales</option>-->
+<!--            <option>Engineering</option>-->
+<!--            <option>Banking</option>-->
+<!--            <option>Insurance</option>-->
+<!--            <option>Manufacturing</option>-->
+<!--            <option>Government</option>-->
+<!--            <option>Telecommunications</option>-->
+<!--            <option>Education</option>-->
+<!--            <option>Medical & Health Care</option>-->
+<!--            <option>Other</option>-->
+<!--          </select>-->
+
+<!--          <label>Language Type</label>-->
+<!--          <select name="language_type" required>-->
+<!--            <option value="" disabled selected hidden>— Select type —</option>-->
+<!--            <option>2GL</option>-->
+<!--            <option>3GL</option>-->
+<!--            <option>4GL</option>-->
+<!--            <option>5GL</option>-->
+<!--            <option>APG</option>-->
+<!--          </select>-->
+
+<!--          <label>Language Type</label>-->
+<!--          <select name="language_type" required>-->
+<!--            <option value="" disabled selected hidden>— Select type —</option>-->
+<!--            <option>2GL</option>-->
+<!--            <option>3GL</option>-->
+<!--            <option>4GL</option>-->
+<!--            <option>5GL</option>-->
+<!--            <option>APG</option>-->
+<!--          </select>-->
+
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Development Info &ndash;&gt;-->
+<!--        <div class="form-section">-->
+<!--          <h3>Development Info</h3>-->
+
+<!--          <label>Development Type</label>-->
+<!--          <select name="development_type" required>-->
+<!--            <option value="" disabled selected hidden>— Select type —</option>-->
+<!--            <option>New Development</option>-->
+<!--            <option>Enhancement</option>-->
+<!--            <option>Re-development</option>-->
+<!--            <option>Other</option>-->
+<!--          </select>-->
+
+<!--          <label>Used Methodology</label>-->
+<!--          <select name="used_methodology" required>-->
+<!--            <option value="" disabled selected hidden>— Select option —</option>-->
+<!--            <option>No</option>-->
+<!--            <option>Yes</option>-->
+<!--            <option>Almost</option>-->
+<!--            <option>Don't Know</option>-->
+<!--          </select>-->
+
+<!--          <label>Development Methodology</label>-->
+<!--          <select name="development_methodology" required>-->
+<!--            <option value="" disabled selected hidden>— Select methodology —</option>-->
+<!--            <option>Waterfall (includes Linear Processing)</option>-->
+<!--            <option>Multifunctional Teams</option>-->
+<!--            <option>Agile Development</option>-->
+<!--            <option>Scrum</option>-->
+<!--            <option>Extreme Programming (XP)</option>-->
+<!--            <option>RAD</option>-->
+<!--            <option>Spiral</option>-->
+<!--            <option>Iterative</option>-->
+<!--            <option>Unified Process</option>-->
+<!--            <option>Lean</option>-->
+<!--            <option>Other</option>-->
+<!--          </select>-->
+
+<!--          <label>Package Customization</label>-->
+<!--          <select name="package_customization" required>-->
+<!--            <option value="" disabled selected hidden>— Select option —</option>-->
+<!--            <option>No</option>-->
+<!--            <option>Yes</option>-->
+<!--            <option>Don't Know</option>-->
+<!--            <option>People Soft</option>-->
+<!--            <option>TIBCO</option>-->
+<!--          </select>-->
+
+<!--          <label>Degree of Customisation</label>-->
+<!--          <input type="number" name="degree_customisation"  min="1" placeholder="Enter Degree" required>-->
+
+<!--          <label>Primary Programming Language</label>-->
+<!--          <select name="primary_language" required>-->
+<!--            <option value="" disabled selected hidden>— Select language —</option>-->
+<!--            <option>Java</option>-->
+<!--            <option>Python</option>-->
+<!--            <option>C++</option>-->
+<!--            <option>C#</option>-->
+<!--            <option>PHP</option>-->
+<!--            <option>JavaScript</option>-->
+<!--            <option>Oracle</option>-->
+<!--            <option>SQL</option>-->
+<!--            <option>Other</option>-->
+<!--          </select>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Team Info &ndash;&gt;-->
+<!--        <div class="form-section">-->
+<!--          <h3>Team Info</h3>-->
+
+<!--          <label>Resource Level</label>-->
+<!--          <input type="number" name="resource_level" min="1" placeholder="Enter level" required>-->
+
+<!--          <label>Team Size Group</label>-->
+<!--          <select name="team_size" required>-->
+<!--            <option value="" disabled selected hidden>— Select size —</option>-->
+<!--            <option>1</option>-->
+<!--            <option>2</option>-->
+<!--            <option>3-4</option>-->
+<!--            <option>5-8</option>-->
+<!--            <option>9-14</option>-->
+<!--            <option>15-20</option>-->
+<!--            <option>21-30</option>-->
+<!--            <option>31-40</option>-->
+<!--            <option>41-50</option>-->
+<!--            <option>51-60</option>-->
+<!--            <option>61-70</option>-->
+<!--            <option>71-80</option>-->
+<!--            <option>81-90</option>-->
+<!--            <option>91-100</option>-->
+<!--            <option>101+</option>-->
+<!--          </select>-->
+
+<!--          <label>Max Team Size</label>-->
+<!--          <input type="number" name="max_team" min="1" placeholder="Enter Size" required>-->
+
+<!--          <label>Avg Team Size</label>-->
+<!--          <input type="number" name="avg_team" min="1" placeholder="Enter Size" required>-->
+<!--          <label>Web Development</label>-->
+<!--          <input type="number" name="web_dev" min="1" placeholder="Enter used" required>-->
+
+<!--          <label>Agile Method Used</label>-->
+<!--          <input type="number" name="agile_method" min="1" placeholder="Enter used" required>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Work Effort Info &ndash;&gt;-->
+<!--        <div class="form-section">-->
+<!--          <h3>Work Effort Info</h3>-->
+
+<!--          <label>Functional Size</label>-->
+<!--          <input type="number" name="functional_size" min="1" placeholder="Enter Size" required>-->
+
+<!--          <label>Adjusted FP</label>-->
+<!--          <input type="number" name="adjusted_fp" min="1" placeholder="Enter FP" required>-->
+
+<!--          <label>LOC</label>-->
+<!--          <input type="number" name="loc" min="1" placeholder="Enter LOC" required>-->
+
+<!--          <label>Inactive Time</label>-->
+<!--          <input type="number" name="inactive_time" min="1" placeholder="Enter hours" required>-->
+
+<!--          <label>Effort Ratio</label>-->
+<!--          <input type="number" name="effort_ratio" min="1" placeholder="Enter ratio" required>-->
+
+<!--          <label>Uncollected Effort</label>-->
+<!--          <input type="number" name="uncollected_effort" min="1" placeholder="Enter hours" required>-->
+
+<!--          <label>Summary Effort</label>-->
+<!--          <input type="number" name="summary_effort" min="1" placeholder="Enter hours" required>-->
+
+<!--          <label>Elapsed Time</label>-->
+<!--          <input type="number" name="elapsed_time" min="1" placeholder="Enter hours" required>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="submit-container">-->
+<!--        <button type="submit" class="submit-btn">Calculate Budget</button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </main>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – Project Budget Analyzer</title>
+  <link rel="stylesheet" href="/static/css/dashboard.css">
 </head>
 <body>
-    <h1>Welcome, {{ username }} </h1>
-    <a href="/auth/logout">Logout</a>
+  <header>
+      <div class="logo">
+          <img src="/static/images/logo.png" alt="Logo" />
+          <span>Project Budget Analyzer</span>
+      </div>
+      <div class="nav-auth">
+          <nav>
+              <ul>
+                  <li><a href="/">Home</a></li>
+              </ul>
+          </nav>
+          <div class="auth-links">
+              <span class="welcome">Welcome, {{ full_name }}</span>
+              <span> | </span>
+              <a href="/auth/logout" class="logout">Logout</a>
+          </div>
+      </div>
+  </header>
+
+  <!-- Main -->
+  <main class="dashboard-container">
+    <form action="/auth/output" method="POST" class="input-form">
+
+      <h2 class="form-title">Enter Feature Details</h2>
+
+      <div class="form-grid">
+
+        <!-- Architecture -->
+        <div class="form-section">
+          <h3>Architecture</h3>
+          <select name="architecture" required>
+            <option value="" disabled selected hidden>— Select architecture —</option>
+            <option value="Client server">Client server</option>
+            <option value="Multi-tier">Multi-tier</option>
+            <option value="Multi-tier with web interface">Multi-tier with web interface</option>
+            <option value="Stand alone">Stand alone</option>
+          </select>
+        </div>
+
+        <!-- Development Type -->
+        <div class="form-section">
+          <h3>Development Type</h3>
+          <select name="development_type" required>
+            <option value="" disabled selected hidden>— Select type —</option>
+            <option value="0">New Development</option>
+            <option value="1">Enhancement</option>
+            <option value="2">Re-development</option>
+            <option value="3">Other</option>
+          </select>
+        </div>
+
+        <!-- Development Platform -->
+        <div class="form-section">
+          <h3>Development Platform</h3>
+          <select name="development_platform" required>
+            <option value="" disabled selected hidden>— Select platform —</option>
+            <option value="0">MR</option>
+            <option value="1">MF</option>
+            <option value="2">PC</option>
+            <option value="3">Multi</option>
+            <option value="4">Proprietary</option>
+            <option value="5">Hand Held</option>
+            <option value="6">Unknown</option>
+          </select>
+        </div>
+
+        <!-- Language Type -->
+        <div class="form-section">
+          <h3>Language Type</h3>
+          <select name="language_type" required>
+            <option value="" disabled selected hidden>— Select language —</option>
+            <option value="0">2GL</option>
+            <option value="1">3GL</option>
+            <option value="2">4GL</option>
+            <option value="3">5GL</option>
+            <option value="4">Unknown</option>
+          </select>
+        </div>
+
+        <!-- Relative Size -->
+        <div class="form-section">
+          <h3>Relative Size</h3>
+          <select name="relative_size" required>
+            <option value="" disabled selected hidden>— Select size —</option>
+            <option value="0">XXS</option>
+            <option value="1">XS</option>
+            <option value="2">S</option>
+            <option value="3">M1</option>
+            <option value="4">M2</option>
+            <option value="5">L</option>
+            <option value="6">XL</option>
+            <option value="7">XXL</option>
+            <option value="8">XXXL</option>
+            <option value="9">Unknown</option>
+          </select>
+        </div>
+
+        <!-- Resource Level -->
+        <div class="form-section">
+          <h3>Resource Level</h3>
+          <input type="number" name="resource_level" min="0" placeholder="Enter resource level" required>
+        </div>
+
+        <!-- Industry Sector -->
+        <div class="form-section">
+          <h3>Industry Sector</h3>
+          <select name="industry_sector" required>
+            <option value="" disabled selected hidden>— Select sector —</option>
+            <option value="0">Service Industry</option>
+            <option value="1">Construction</option>
+            <option value="2">Wholesale & Retail</option>
+            <option value="3">Insurance</option>
+            <option value="4">Banking</option>
+            <option value="5">Medical & Health Care</option>
+            <option value="6">Manufacturing</option>
+            <option value="7">Government</option>
+            <option value="8">Logistics</option>
+            <option value="9">Other</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="submit-container">
+        <button type="submit" class="submit-btn">Calculate Budget</button>
+      </div>
+    </form>
+  </main>
 </body>
 </html>

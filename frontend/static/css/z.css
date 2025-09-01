@@ -1,0 +1,190 @@
+/* ===== Global ===== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: url('../images/background.jpg') no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+/* ===== Header ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent; /* fully transparent */
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo img { width: 34px; height: 34px; object-fit: contain; }
+.logo span { font-weight: 700; font-size: 18px; }
+
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Welcome (glowing, no underline) */
+.welcome {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ff4da6;
+  animation: glow 2s infinite alternate;
+  text-decoration: none;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 6px #ff4da6, 0 0 12px #ff80bf; }
+  to   { text-shadow: 0 0 14px #ff80bf, 0 0 24px #ff4da6; }
+}
+
+/* Logout hover underline + lift */
+.auth-links a.logout {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.auth-links a.logout::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #ff4da6, #ff80bf);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  animation: pulseBreathBorder 2.5s infinite ease-in-out;
+}
+.auth-links a.logout:hover::after { transform: scaleX(1); }
+.auth-links a.logout:hover {
+  color: #ff4da6;
+  transform: translateY(-3px);
+  text-shadow: 0 4px 10px rgba(255,77,166,0.7);
+}
+@keyframes pulseBreathBorder {
+  0%,100% { opacity: .6 }
+  50%     { opacity: 1 }
+}
+
+/* ===== Main Layout ===== */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(220px, 1fr));
+  gap: 22px;
+  width: 100%;
+  max-width: 1500px;
+}
+
+/* Card columns */
+.column {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.35);
+}
+.column h3 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* Fields */
+.column label {
+  position: relative; /* anchor for autocomplete popup */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #e9e9e9;
+}
+.column input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: rgba(255,255,255,0.15);
+  transition: box-shadow .2s ease, background .2s ease;
+}
+.column input:focus {
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 0 0 3px rgba(255,77,166,0.35);
+}
+
+/* Submit */
+.submit-container {
+  margin-top: 22px;
+  text-align: center;
+}
+button {
+  padding: 14px 28px;
+  border-radius: 14px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #a246ff, #ff70d4);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(162,70,255,0.55);
+  transition: transform .2s ease, box-shadow .3s ease;
+}
+button:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 8px 28px rgba(255,112,212,0.75);
+}
+
+/* ===== Autocomplete (combobox-style) ===== */
+.autocomplete-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  background: rgba(0,0,0,0.88);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 9999;
+}
+.autocomplete-item {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #fff;
+}
+.autocomplete-item[aria-selected="true"],
+.autocomplete-item:hover {
+  background: rgba(255,77,166,0.35);
+}
+.autocomplete-empty {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #bbb;
+}
