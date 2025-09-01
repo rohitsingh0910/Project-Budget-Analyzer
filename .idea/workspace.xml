@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fda2e63b-6eda-4391-8007-fb419a08b479" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/static/css/dashboard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/css/output.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/css/z.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/images/background2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/images/background3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/js/autocomplete.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/static/sounds/slot-machine.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/templates/output.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/auth/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/auth/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/auth/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/templates/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/static/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/static/css/output.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/css/output.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
