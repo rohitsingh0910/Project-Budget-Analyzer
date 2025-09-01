@@ -1,0 +1,138 @@
+/* ===== Global ===== */
+body {
+  background: url('../images/background.jpg') no-repeat center center/cover;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Header ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px;
+  background: transparent;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo img { width: 34px; }
+.logo span { font-size: 20px; font-weight: bold; }
+
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.auth-links span.welcome {
+  font-size: 18px;
+  color: #ff80bf;
+  font-weight: 600;
+  animation: neonGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+  from {
+    text-shadow: 0 0 6px #ff80bf, 0 0 12px #ff4da6, 0 0 18px #ff4da6;
+  }
+  to {
+    text-shadow: 0 0 12px #ff80bf, 0 0 18px #ff4da6, 0 0 24px #ff4da6;
+  }
+}
+
+.auth-links a.logout {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+.auth-links a.logout:hover {
+  color: #ff4da6;
+  text-shadow: 0 0 8px rgba(255, 77, 166, 0.7);
+}
+
+/* ===== Result Container ===== */
+.result-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px;
+}
+
+/* ===== Result Panel ===== */
+.result-panel {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  max-width: 500px;
+  width: 100%;
+}
+
+.result-panel h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 22px;
+}
+
+/* ===== Budget Card ===== */
+.budget-card {
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+}
+
+.budget-card .amount {
+  font-size: 40px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 14px rgba(162,70,255,0.8);
+  animation: pulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(1.05); opacity: 1; }
+}
+
+.budget-card .hint {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* ===== Back Button ===== */
+.back-actions {
+  margin-top: 20px;
+}
+.back-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #a246ff, #ff70d4);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.back-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255,112,212,0.8);
+}

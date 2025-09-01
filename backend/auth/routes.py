@@ -1,3 +1,4 @@
+import joblib
 from fastapi import APIRouter, Request, Form, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -5,11 +6,7 @@ from pathlib import Path
 from typing import Optional
 from datetime import datetime
 from backend.auth.service import login_user, signup_user
-import logging
-
 from backend.utils.logger import logger
-
-logger = logging.getLogger()
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 templates = Jinja2Templates(directory=str(BASE_DIR / "frontend" / "templates"))
@@ -84,7 +81,6 @@ import re
 
 EMAIL_REGEX = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 PASSWORD_REGEX = r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-
 
 @auth_router.post("/signup")
 async def handle_signup(
@@ -173,6 +169,7 @@ async def dashboard(request: Request):
         }
     )
 
+
 # ------------------ LOGOUT ------------------
 @auth_router.get("/logout")
 async def logout(request: Request):
@@ -180,7 +177,7 @@ async def logout(request: Request):
     # print(user_email["email"])
     if user_email:
         logger.info(f"LOGOUT: {user_email["email"]}")  #  write to log file
-    request.session.clear()  # remove session completely
+    request.session.clear() # remove session completely
     return RedirectResponse(url="/auth/login", status_code=303)
 
 
@@ -193,4 +190,80 @@ async def about_page(request: Request):
 # ------------------ CONTACT ------------------
 @auth_router.get("/contact", response_class=HTMLResponse)
 async def about_page(request: Request):
+    user = request.session.get("user")
+    if not user:
+        return RedirectResponse(url="/auth/login", status_code=303)
     return templates.TemplateResponse("contact.html", {"request": request})
+
+
+# ------------------ OUTPUT ------------------
+import pandas as pd
+@auth_router.post("/output", response_class=HTMLResponse)
+async def output(request: Request):
+    user = request.session.get("user")
+    if not user:
+        return RedirectResponse(url="/auth/login", status_code=303)
+    form = await request.form()
+    data = dict(form)
+    print(data)
+    # ===================
+    import pandas as pd
+
+    def transform_input(data):
+        # Define all possible architecture categories
+        architecture_categories = [
+            'Client server',
+            'Multi-tier',
+            'Multi-tier with web interface',
+            'Stand alone'
+        ]
+
+        # One-hot encode architecture
+        arch_dict = {
+            f'Architecture_{arch}': int(data['architecture'] == arch)
+            for arch in architecture_categories
+        }
+
+        # Convert the rest to numeric with "_num" suffix
+        numeric_dict = {
+            'Development_Type_num': int(data['development_type']),
+            'Development_Platform_num': int(data['development_platform']),
+            'Language_Type_num': int(data['language_type']),
+            'Relative_Size_num': int(data['relative_size']),
+            'Resource_Level_num': int(data['resource_level']),
+            'Industry_Sector_num': int(data['industry_sector'])
+        }
+
+        # Merge dictionaries
+        final_dict = {**arch_dict, **numeric_dict}
+
+        return pd.DataFrame([final_dict])
+
+    # Transform your given data
+    sample_input = transform_input(data)
+
+    print(sample_input)
+
+    # --------------------ml-model------------------------------
+    best_model = joblib.load(r"C:\Users\Admin\PycharmProjects\Project-Budget-Analyzer\random_forest_model.pkl")
+    prediction = best_model.predict(sample_input)
+
+    # Since it's multi-output: [Summary Work Effort, Project Elapsed Time]
+    summary_effort, elapsed_time = prediction[0]
+
+    print("Predicted Summary Work Effort:", summary_effort)
+    print("Predicted Project Elapsed Time:", elapsed_time)
+
+    # ---------------------------
+    # Budget calculation
+    # ---------------------------
+    cost_per_effort_unit = 10000  # Example: 100 currency units per effort unit
+    predicted_budget = summary_effort * elapsed_time * cost_per_effort_unit
+
+    # Format as INR (Indian Rupee, widely used in software estimation in India)
+    print("Predicted Budget: ₹{:,}".format(round(predicted_budget, 2)))
+
+    return templates.TemplateResponse(
+        "output.html",
+        {"request": request, "username":user["full_name"], "amount":predicted_budget}
+    )

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – Project Budget Analyzer</title>
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="/static/images/logo.png" alt="Logo">
+      <span>Project Budget Analyzer</span>
+    </div>
+    <div class="auth-links">
+      <span class="welcome">Welcome, {{ username }}</span>
+      <a href="/auth/logout" class="logout">Logout</a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="dashboard-container">
+    <!-- Updated: Form now posts to /auth/output -->
+    <form action="/auth/output" method="POST" class="input-form">
+
+      <h2 class="form-title">Enter Project Details</h2>
+
+      <div class="form-grid">
+        <!-- Project Info -->
+        <div class="form-section">
+          <h3>Project Info</h3>
+
+          <label>Development Methodology</label>
+          <select name="development_methodology">
+            <option>Waterfall (includes Linear Processing)</option>
+            <option>Multifunctional Teams</option>
+            <option>Agile Development</option>
+            <option>Scrum</option>
+            <option>Extreme Programming (XP)</option>
+            <option>RAD</option>
+            <option>Spiral</option>
+            <option>Iterative</option>
+            <option>Unified Process</option>
+            <option>Lean</option>
+            <option>Other</option>
+          </select>
+
+
+          <label>Business Area Type</label>
+          <select name="business_area">
+            <option>Sales</option>
+            <option>Engineering</option>
+            <option>Banking</option>
+            <option>Insurance</option>
+            <option>Manufacturing</option>
+            <option>Government</option>
+            <option>Telecommunications</option>
+            <option>Education</option>
+            <option>Medical & Health Care</option>
+            <option>Other</option>
+          </select>
+
+          <label>Industry Sector</label>
+          <select name="industry_sector">
+            <option>Service Industry</option>
+            <option>Construction</option>
+            <option>Wholesale & Retail</option>
+            <option>Insurance</option>
+            <option>Banking</option>
+            <option>Medical & Health Care</option>
+            <option>Manufacturing</option>
+            <option>Government</option>
+            <option>Logistics</option>
+            <option>Other</option>
+          </select>
+
+          <label>Organisation Type</label>
+          <select name="organisation_type">
+            <option>Software Development</option>
+            <option>Manufacturing</option>
+            <option>Government</option>
+            <option>Telecommunication</option>
+            <option>Education</option>
+            <option>Defence</option>
+            <option>Retail</option>
+            <option>Financial</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <!-- Application Info -->
+        <div class="form-section">
+          <h3>Application Info</h3>
+
+          <label>Package Customization</label>
+          <select name="package_customization">
+            <option>No</option>
+            <option>Yes</option>
+            <option>Don't Know</option>
+            <option>People Soft</option>
+            <option>TIBCO</option>
+          </select>
+
+          <label>Application Type</label>
+          <select name="application_type">
+            <option>Transaction/Production System</option>
+            <option>Management Information System</option>
+            <option>Billing</option>
+            <option>CRM</option>
+            <option>eCommerce</option>
+            <option>Web Application</option>
+            <option>Mobile Application</option>
+            <option>Other</option>
+          </select>
+
+          <label>Development Type</label>
+          <select name="development_type">
+            <option>New Development</option>
+            <option>Enhancement</option>
+            <option>Re-development</option>
+            <option>Porting</option>
+            <option>POC</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <!-- Development Info -->
+        <div class="form-section">
+          <h3>Development Info</h3>
+
+          <label>Primary Programming Language</label>
+          <select name="primary_language">
+            <option>Java</option>
+            <option>Python</option>
+            <option>C++</option>
+            <option>C#</option>
+            <option>PHP</option>
+            <option>JavaScript</option>
+            <option>Oracle</option>
+            <option>SQL</option>
+            <option>Other</option>
+          </select>
+
+          <label>Development Platform</label>
+          <select name="development_platform">
+            <option>PC</option>
+            <option>MR</option>
+            <option>MF</option>
+            <option>Multi</option>
+            <option>Proprietary</option>
+            <option>Hand Held</option>
+          </select>
+
+          <label>Language Type</label>
+          <select name="language_type">
+            <option>2GL</option>
+            <option>3GL</option>
+            <option>4GL</option>
+            <option>5GL</option>
+            <option>APG</option>
+          </select>
+
+          <label>Relative Size</label>
+          <select name="relative_size">
+            <option>XXS</option>
+            <option>XS</option>
+            <option>S</option>
+            <option>M1</option>
+            <option>M2</option>
+            <option>L</option>
+            <option>XL</option>
+            <option>XXL</option>
+            <option>XXXL</option>
+          </select>
+        </div>
+
+        <!-- Team Info -->
+        <div class="form-section">
+          <h3>Team Info</h3>
+
+          <label>Team Size Group</label>
+          <select name="team_size">
+            <option>1</option>
+            <option>2</option>
+            <option>3-4</option>
+            <option>5-8</option>
+            <option>9-14</option>
+            <option>15-20</option>
+            <option>21-30</option>
+            <option>31-40</option>
+            <option>41-50</option>
+            <option>51-60</option>
+            <option>61-70</option>
+            <option>71-80</option>
+            <option>81-90</option>
+            <option>91-100</option>
+            <option>101+</option>
+          </select>
+
+          <label>Client Server</label>
+          <select name="client_server">
+            <option>Yes</option>
+            <option>No</option>
+            <option>Don't Know</option>
+            <option>Not Applicable</option>
+          </select>
+
+          <label>Architecture</label>
+          <select name="architecture">
+            <option>Stand Alone</option>
+            <option>Client Server</option>
+            <option>Multi-Tier</option>
+            <option>Multi-Tier with Web Interface</option>
+            <option>Multi-Tier/Client Server</option>
+          </select>
+        </div>
+
+        <!-- Work Effort Info -->
+        <div class="form-section">
+          <h3>Work Effort Info</h3>
+
+          <label>Used Methodology</label>
+          <select name="used_methodology">
+            <option>No</option>
+            <option>Yes</option>
+            <option>Almost</option>
+            <option>Don't Know</option>
+          </select>
+
+          <label>Business Application</label>
+          <select name="business_application">
+            <option>Business Application</option>
+            <option>Mathematically Intensive Application</option>
+            <option>Infrastructure Software</option>
+            <option>Real-Time Application</option>
+          </select>
+
+          <label>Work Hours</label>
+          <input type="number" name="work_hours" min="1" placeholder="Enter hours">
+          
+        </div>
+      </div>
+
+      <!--  Submit button (not <a>) -->
+      <div class="submit-container">
+        <button type="submit" class="submit-btn">Calculate Budget</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
+
